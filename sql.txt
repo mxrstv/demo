@@ -1,0 +1,17 @@
+CREATE TABLE public.partners
+(
+    type character varying(3) NOT NULL,
+    name character varying(255) NOT NULL,
+    ceo character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    phone text NOT NULL,
+    legal_address text NOT NULL,
+    tax_id character varying(10) NOT NULL,
+    rating integer NOT NULL,
+    id serial,
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE IF EXISTS public.partners
+    OWNER to postgres;
+
