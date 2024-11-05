@@ -1,17 +1,33 @@
-CREATE TABLE public.partners
+CREATE TABLE partners
 (
-    type character varying(3) NOT NULL,
-    name character varying(255) NOT NULL,
-    ceo character varying(255) NOT NULL,
-    email character varying(255) NOT NULL,
+    type_id integer NOT NULL,
+    name text NOT NULL,
+    ceo text NOT NULL,
+    email text NOT NULL,
     phone text NOT NULL,
     legal_address text NOT NULL,
-    tax_id character varying(10) NOT NULL,
+    tax_id text NOT NULL,
     rating integer NOT NULL,
     id serial,
     PRIMARY KEY (id)
 );
 
-ALTER TABLE IF EXISTS public.partners
-    OWNER to postgres;
+CREATE TABLE organization_types
+(
+    id serial,
+    type text NOT NULL
+);
+
+INSERT INTO organization_types (type)
+VALUES ('ЗАО'), ('ООО'), ('ПАО'), ('ОАО');
+
+INSERT INTO partners (type_id, name, ceo, email, phone, legal_address, tax_id, rating)
+VALUES 
+(1, 'База Строитель', 'Иванова Александра Ивановна', 'aleksandraivanova@ml.ru', '493 123 45 67', '652050, Кемеровская область, город Юрга, ул. Лесная, 15', '2222455179',7),
+(2, 'Паркет 29', 'Петров Василий Петрович', 'vppetrov@vl.ru', '987 123 56 78', '164500, Архангельская область, город Северодвинск, ул. Строителей, 18', '3333888520',7),
+(3,'Стройсервис', 'Соловьев Андрей Николаевич', 'ansolovev@st.ru', '812 223 32 00', '188910, Ленинградская область, город Приморск, ул. Парковая, 21','4440391035',7),
+(4,'Ремонт и отделка','Воробьева Екатерина Валерьевна','ekaterina.vorobeva@ml.ru','444 222 33 11','143960, Московская область, город Реутов, ул. Свободы, 51','1111520857',5),
+(1,'МонтажПро','Степанов Степан Сергеевич','stepanov@stepan.ru','912 888 33 33','309500, Белгородская область, город Старый Оскол, ул. Рабочая, 122','5552431140',10);
+
+
 
