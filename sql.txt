@@ -1,6 +1,15 @@
+
+CREATE TABLE organization_types
+(
+    id serial,
+    type text NOT NULL,
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE partners
 (
-    type_id integer REFERENCES organization_types(id) NOT NULL,
+    id serial,
+    organization_type_id integer REFERENCES organization_types(id) NOT NULL,
     name text NOT NULL,
     ceo text NOT NULL,
     email text NOT NULL,
@@ -8,14 +17,6 @@ CREATE TABLE partners
     legal_address text NOT NULL,
     tax_id text NOT NULL,
     rating integer NOT NULL,
-    id serial,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE organization_types
-(
-    id serial,
-    type text NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -32,12 +33,12 @@ VALUES
 
 CREATE TABLE products
 (
+    id serial,
     product_type_id integer REFERENCES product_types(id) NOT NULL,
     name text NOT NULL,
     article text NOT NULL,
     min_price_for_partner decimal NOT NULL,
     currency_type text NOT NULL,
-    id serial,
     PRIMARY KEY (id)
 );
 
@@ -53,8 +54,37 @@ VALUES ('Паркетная доска'), ('Ламинат'), ('Пробково
 
 INSERT INTO products (product_type_id, name, article, min_price_for_partner, currency_type)
 VALUES
-(1,'Паркетная доска Ясень темный однополосная 14 мм','8758385', 4456.90, 'RUB'),
+(1, 'Паркетная доска Ясень темный однополосная 14 мм','8758385', 4456.90, 'RUB'),
 (1, 'Инженерная доска Дуб Французская елка однополосная 12 мм','8858958',7330.99, 'RUB'),
 (2, 'Ламинат Дуб дымчато-белый 33 класс 12 мм','7750282',1799.33, 'RUB'),
 (2, 'Ламинат Дуб серый 32 класс 8 мм с фаской', '7028748',3890.41, 'RUB'),
 (3, 'Пробковое напольное клеевое покрытие 32 класс 4 мм','5012543',5450.59, 'RUB');
+
+CREATE TABLE sales
+(
+    id serial NOT NULL,
+    product_id integer REFERENCES products(id) NOT NULL,
+    partner_id integer REFERENCES partners(id) NOT NULL,
+    production_quantity bigint NOT NULL,
+    date_of_sale DATE NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO sales (product_id, partner_id, production_quantity, date_of_sale)
+VALUES
+(1,1,15500,'03-23-2023'),
+(3,1,12350,'12-18-2023'),
+(4,1,37400,'06-07-2024'),
+(2,2,35000,'12-02-2022'),
+(5,2,1250,'05-17-2023'),
+(3,2,1000,'06-07-2024'),
+(1,2,7550,'07-01-2024'),
+(1,3,7250,'01-22-2023'),
+(2,3,2500,'07-05-2024'),
+(4,4,59050,'03-05-2023'),
+(3,4,37200,'03-12-2024'),
+(5,4,4500,'5-14-2024'),
+(3,5,50000,'9-19-2023'),
+(4,5,670000,'11-10-2023'),
+(1,5,35000,'4-15-2024'),
+(2,5,25000,'6-12-2024');
