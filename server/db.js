@@ -1,6 +1,7 @@
-import pg from 'pg'
+import pg from 'pg';
 
 const { Client } = pg;
+
 export default new Client({
   user: 'postgres',
   password: '219219',

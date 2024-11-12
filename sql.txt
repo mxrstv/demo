@@ -30,6 +30,13 @@ VALUES
 (4, 'Ремонт и отделка','Воробьева Екатерина Валерьевна', 'ekaterina.vorobeva@ml.ru', '444 222 33 11', '143960, Московская область, город Реутов, ул. Свободы, 51', '1111520857', 5),
 (1, 'МонтажПро','Степанов Степан Сергеевич', 'stepanov@stepan.ru', '912 888 33 33', '309500, Белгородская область, город Старый Оскол, ул. Рабочая, 122', '5552431140', 10);
 
+CREATE TABLE product_types
+(
+    id serial,
+    type text NOT NULL,
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE products
 (
     id serial,
@@ -38,13 +45,6 @@ CREATE TABLE products
     article text NOT NULL,
     min_price_for_partner decimal NOT NULL,
     currency_type text NOT NULL,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE product_types
-(
-    id serial,
-    type text NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -68,6 +68,8 @@ CREATE TABLE sales
     date_of_sale DATE NOT NULL,
     PRIMARY KEY (id)
 );
+
+SET datestyle = "ISO, MDY";
 
 INSERT INTO sales (product_id, partner_id, production_quantity, date_of_sale)
 VALUES
