@@ -13,18 +13,44 @@ function App() {
         console.log(error);
       })
   }, [])
-  console.log(users)
+
+  const calcDiscount = (totalQuantity) => {
+    console.log(totalQuantity);
+    const num = Number(totalQuantity);
+    if (num < 10000) {
+      return 0
+    } 
+    if (num < 50000) {
+      return 5
+    }
+    if (num < 300000) {
+      return 10
+    }
+    return 15;
+  }
+  
 
   return (
     <>
       <table>
+        <thead>
+          <td>id</td>
+          <td>type</td>
+          <td>name</td>
+          <td>ceo</td>
+          <td>phone</td>
+          <td>rating</td>
+          <td>discount</td>
+        </thead>
         <tbody>
-          {users.map((user) => <tr>
-            <td>{user.organization_type_id}</td>
+          {users.map((user) => <tr key={user.id}>
+            <td>{user.id}</td>
+            <td>{user.type}</td>
             <td>{user.name}</td>
             <td>{user.ceo}</td>
             <td>{user.phone}</td>
             <td>{user.rating}</td>
+            <td>{`${calcDiscount(user.total_quantity)}%`}</td>
           </tr>)}
         </tbody>
       </table>
