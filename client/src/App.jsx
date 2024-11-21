@@ -19,7 +19,7 @@ function App() {
     const num = Number(totalQuantity);
     if (num < 10000) {
       return 0
-    } 
+    }
     if (num < 50000) {
       return 5
     }
@@ -28,32 +28,28 @@ function App() {
     }
     return 15;
   }
-  
+
 
   return (
     <>
-      <table>
-        <thead>
-          <td>id</td>
-          <td>type</td>
-          <td>name</td>
-          <td>ceo</td>
-          <td>phone</td>
-          <td>rating</td>
-          <td>discount</td>
-        </thead>
-        <tbody>
-          {users.map((user) => <tr key={user.id}>
-            <td>{user.id}</td>
-            <td>{user.type}</td>
-            <td>{user.name}</td>
-            <td>{user.ceo}</td>
-            <td>{user.phone}</td>
-            <td>{user.rating}</td>
-            <td>{`${calcDiscount(user.total_quantity)}%`}</td>
-          </tr>)}
-        </tbody>
-      </table>
+      <ul className='partnersCardWrapper'>
+        {users.map((user) => <li key={user.id}>
+          <div className='partnerCard'>
+            <div className="partnerData">
+              <p className='partnerHeading'>{user.type} | {user.name}</p>
+              <p>{user.ceo}</p>
+              <p>{user.phone}</p>
+              <p>Рейтинг: {user.rating}</p>
+            </div>
+            <div className="partnerDiscount">
+              <p className='partnerHeading'>
+                {`${calcDiscount(user.total_quantity)}%`}
+              </p>
+            </div>
+          </div>
+        </li>
+        )}
+      </ul>
     </>
   )
 }
