@@ -1,6 +1,7 @@
 import './App.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from './Header';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <ul className='partnersCardWrapper'>
         {users.map((user) => <li key={user.id}>
           <div className='partnerCard'>

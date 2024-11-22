@@ -2,6 +2,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .partnersCardWrapper {
@@ -21,6 +22,20 @@ body {
 
 .partnerHeading {
   font-size: 20px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;  
+}
+
+.headerIcon {
+  content: url('./assets/icon.png');
+  max-width: 66px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 li {
