@@ -15,7 +15,6 @@ function App() {
   }, [])
 
   const calcDiscount = (totalQuantity) => {
-    console.log(totalQuantity);
     const num = Number(totalQuantity);
     if (num < 10000) {
       return 0
