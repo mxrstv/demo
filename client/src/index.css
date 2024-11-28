@@ -28,7 +28,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;  
+  align-items: center;
 }
 
 .headerIcon {
@@ -47,3 +47,16 @@ p {
   margin: 0px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form button {
+  margin-top: 5px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}

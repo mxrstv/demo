@@ -1,7 +1,7 @@
-import './App.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './Header';
+import { Link } from "react-router";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -29,7 +29,6 @@ function App() {
     return 15;
   }
 
-
   return (
     <>
       <Header />
@@ -51,8 +50,12 @@ function App() {
         </li>
         )}
       </ul>
+      <Link to="/create">
+        <button>Добавить пользователя</button>
+      </Link>
+
     </>
   )
 }
 
-export default App
+export default App;
