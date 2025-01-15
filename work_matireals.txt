@@ -38,3 +38,8 @@ const sales = await client.query('Select t2.id, sum(t1.production_quantity) from
 
 вывести партнеров полностью со скидкой: 
 SELECT T1.id, T2.type, T1.name, T1.ceo, T1.phone, T1.rating, CASE total_quantity WHEN total_quantity < 10000 THEN total_quantity ELSE total_quantity END CASE from (SELECT T1.id, T2.type, T1.name, T1.ceo, T1.phone, T1.rating, SUM(T3.production_quantity) as total_quantity FROM PARTNERS T1 JOIN organization_types T2 on T1.organization_type_id = T2.id JOIN sales T3 on T3.partner_id = T1.id group by T1.id, T2.type, T1.name, T1.ceo, T1.phone, T1.rating)
+
+
+SELECT T1.id, T1.organization_type, T1.name, T1.ceo, T1.phone, T1.rating, sum(T2.production_quantity) from partners as T1
+JOIN sales as T2 on T1.id = T2.partner_id
+GROUP BY T1.id, T1.organization_type, T1.name, T1.ceo, T1.phone, T1.rating;

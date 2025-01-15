@@ -33,10 +33,10 @@ function App() {
     <>
       <Header />
       <ul className='partnersCardWrapper'>
-        {users.map((user) => <li key={user.id}>
+        {users.map((user) => <li title='редактировать' key={user.id}>
           <div className='partnerCard'>
             <div className="partnerData">
-              <p className='partnerHeading'>{user.type} | {user.name}</p>
+              <p className='partnerHeading'>{user.organization_type} | {user.name}</p>
               <p>{user.ceo}</p>
               <p>{user.phone}</p>
               <p>Рейтинг: {user.rating}</p>

@@ -5,6 +5,13 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .partnersCardWrapper {
   border: 1px solid black;
   padding: 15px;
@@ -20,6 +27,11 @@ body {
   justify-content: space-between;
 }
 
+.partnerCard:hover {
+  background-color: #67BA80;
+  cursor: pointer;
+}
+
 .partnerHeading {
   font-size: 20px;
 }
@@ -29,6 +41,7 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  align-self: baseline;
 }
 
 .headerIcon {

@@ -4,7 +4,7 @@ const CreateUser = () => {
   const [user, setUser] = useState({});
   function handleSubmit(e){
     e.preventDefault()
-    const data = {
+    const user = {
         name: e.target.name.value,
         type: e.target.types.value,
         rating: e.target.rating.value,
@@ -13,10 +13,11 @@ const CreateUser = () => {
         phone: e.target.phone.value,
         email: e.target.email.value
     }
-    console.log(data)
+    console.log(user)
 }
 
   return (<>
+    <h1>Создать пользователя</h1>
     <form onSubmit={(e) => {e.preventDefault(); handleSubmit(e)}}>
       <div className="formGroup">
         <label htmlFor="name">Наименование:</label>
@@ -33,7 +34,7 @@ const CreateUser = () => {
       </div>
       <div className="formGroup" >
         <label htmlFor="rating">Рейтинг (в %):</label>
-        <input id="rating" type="number" name="rating" step="1" required />
+        <input id="rating" type="number" name="rating" step="1" min='0' max='100' required />
       </div>
       <div className="formGroup">
         <label htmlFor="adress">Адрес:</label>
